@@ -31,14 +31,16 @@ def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
     return UserService.get_user(db=db, obj_id=user_id)
 
 
-@user_router.get('/get_news_for_user/<user_id>')
+@user_router.get("/get_news_for_user/<user_id>")
 def get_my_events(user_id: int, db: Session = Depends(get_db)) -> schemas.UsersNewsInDb:
     news = db.query(models.New).filter(models.New.user_id == user_id)
     return schemas.UsersNewsInDb(id=user_id, news=list(news))
 
 
-@user_router.get('/get_comments_for_user/<user_id>')
-def get_my_events(user_id: int, db: Session = Depends(get_db)) -> schemas.UsersCommentsInDb:
+@user_router.get("/get_comments_for_user/<user_id>")
+def get_my_events(
+    user_id: int, db: Session = Depends(get_db)
+) -> schemas.UsersCommentsInDb:
     comments = db.query(models.Comment).filter(models.Comment.user_id == user_id)
     return schemas.UsersCommentsInDb(id=user_id, comments=list(comments))
 

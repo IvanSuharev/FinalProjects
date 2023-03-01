@@ -80,4 +80,3 @@ class UsersCommentsInDb(BaseModel):
 
     class Config:
         orm_mode = True
-

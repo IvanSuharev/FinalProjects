@@ -12,5 +12,5 @@ from .schemas import (
     UpdateComment,
     CommentInDB,
     UsersNewsInDb,
-    UsersCommentsInDb
+    UsersCommentsInDb,
 )
